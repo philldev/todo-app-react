@@ -13,19 +13,8 @@ import FormInput from "../components/FormInput";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
+import { loginField } from "../utils.js/formField";
 
-const FORM_DATA = [
-  {
-    type: "email",
-    label: "Email",
-    name: "email",
-  },
-  {
-    type: "password",
-    label: "Password",
-    name: "password",
-  },
-];
 
 export default function Login() {
   let history = useHistory();
@@ -57,18 +46,20 @@ export default function Login() {
         history.push("/");
       })
       .catch((error) => {
-        console.log(error)
-        // setState({
-        //   errors: error.response,
-        //   loading: false,
-        // });
+        console.log(error.response.data)
+        if (error.response.data) {
+          setState({
+            errors: error.response.data.general,
+            loading: false,
+          });
+        }
       });
   };
 
   return (
     <Box mx="auto" maxW="500px" as="form" onSubmit={handleSubmit(onSubmit)}>
       <Heading textAlign="center">Login</Heading>
-      {FORM_DATA.map((f, i) => (
+      {loginField.map((f, i) => (
         <FormInput
           key={i}
           type={f.type}
@@ -83,7 +74,7 @@ export default function Login() {
           {state.loading ? <Spinner /> : "Login"}
         </Button>
       </FormControl>
-      {state.errors && (
+      {state.errors.length > 0 && (
         <Alert status="error">
           <AlertIcon />
           {state.errors}
