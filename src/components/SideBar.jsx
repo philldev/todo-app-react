@@ -3,10 +3,10 @@ import { Box } from '@chakra-ui/core'
 import Avatar from './Avatar'
 import Nav from './Nav'
 
-export default function SideBar() {
+export default function SideBar({profilePicture ,username}) {
   return (
     <Box width='200px'>
-      <Avatar/>
+      <Avatar profilePicture={profilePicture} username={username}/>
       <Nav/>
       
     </Box>

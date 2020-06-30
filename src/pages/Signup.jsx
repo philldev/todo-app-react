@@ -52,7 +52,7 @@ export default function Signup() {
 				history.push('/');
 			})
 			.catch((error) => {
-        console.log(error.response);
+        console.log(error.response.data.username);
 				// setState({
 				// 	errors: error.response.data,
 				// 	loading: false

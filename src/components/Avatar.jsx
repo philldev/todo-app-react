@@ -2,11 +2,12 @@ import React from 'react'
 import { Box, Image, Text } from '@chakra-ui/core'
 import avatar from '../assets/image/Avatar.svg'
 
-export default function Avatar() {
+export default function Avatar( {username,profilePicture}) {
+  console.log(profilePicture)
   return (
     <Box width='100%'>
-      <Image src={avatar}/>
-      <Text mt='12px' fontWeight='500' fontSize='14px' textAlign='center'>Username</Text>
+      <Image src={profilePicture !== '' ?  profilePicture :  avatar }/>
+      <Text mt='12px' fontWeight='500' fontSize='14px' textAlign='center'>{username}</Text>
     </Box>
   )
 }
