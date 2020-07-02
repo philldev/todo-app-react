@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import { loginField } from "../utils.js/formField";
+import Navbar from "../components/Navbar";
 
 
 export default function Login() {
@@ -57,6 +58,8 @@ export default function Login() {
   };
 
   return (
+    <>
+    <Navbar />
     <Box mx="auto" maxW="500px" as="form" onSubmit={handleSubmit(onSubmit)}>
       <Heading textAlign="center">Login</Heading>
       {loginField.map((f, i) => (
@@ -81,5 +84,6 @@ export default function Login() {
         </Alert>
       )}
     </Box>
+    </>
   );
 }

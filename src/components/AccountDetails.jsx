@@ -1,10 +1,5 @@
 import React from "react";
 import {
-  Box,
-  Editable,
-  EditablePreview,
-  EditableInput,
-  Text,
   Grid,
   FormControl,
   FormLabel,
@@ -17,6 +12,7 @@ export default function AccountDetails({ profile, register }) {
       <FormControl>
         <FormLabel htmlFor="firstName">First name</FormLabel>
         <Input
+        color='gray.800'
           type="text"
           id="firstName"
           aria-describedby="email-helper-text"
@@ -28,10 +24,11 @@ export default function AccountDetails({ profile, register }) {
       <FormControl>
         <FormLabel htmlFor="lastname">Last name</FormLabel>
         <Input
+        color='gray.800'
           type="text"
           id="lastname"
           aria-describedby="email-helper-text"
-          name="lastname"
+          name="lastName"
           defaultValue={profile.lastName}
           ref={register}
         />
@@ -39,6 +36,7 @@ export default function AccountDetails({ profile, register }) {
       <FormControl>
         <FormLabel htmlFor="email">Email</FormLabel>
         <Input
+        color='gray.800'
           type="email"
           id="email"
           aria-describedby="email-helper-text"
@@ -50,6 +48,7 @@ export default function AccountDetails({ profile, register }) {
       <FormControl>
         <FormLabel htmlFor="phoneNumber">Phone number</FormLabel>
         <Input
+        color='gray.800'
           type="number"
           id="phoneNumber"
           aria-describedby="email-helper-text"
@@ -61,6 +60,7 @@ export default function AccountDetails({ profile, register }) {
       <FormControl>
         <FormLabel htmlFor="firstName">Username</FormLabel>
         <Input
+        color='gray.800'
           type="text"
           id="username"
           aria-describedby="email-helper-text"
@@ -72,6 +72,7 @@ export default function AccountDetails({ profile, register }) {
       <FormControl>
         <FormLabel htmlFor="country">Country</FormLabel>
         <Input
+        color='gray.800'
           type="text"
           id="country"
           aria-describedby="email-helper-text"

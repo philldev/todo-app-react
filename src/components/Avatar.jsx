@@ -3,7 +3,6 @@ import { Box, Image, Text } from '@chakra-ui/core'
 import avatar from '../assets/image/Avatar.svg'
 
 export default function Avatar( {username,profilePicture}) {
-  console.log(profilePicture)
   return (
     <Box width='100%'>
       <Image src={profilePicture !== '' ?  profilePicture :  avatar }/>
