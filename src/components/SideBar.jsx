@@ -1,11 +1,11 @@
+import { Avatar, Flex, Image } from "@chakra-ui/core";
 import React, { useContext } from "react";
-import { Box, Image, Flex, Avatar } from "@chakra-ui/core";
-import Nav from "./Nav";
-import { UserContext } from "../Context/UserContext";
-import logoSmall from "../assets/logosmall.svg";
 import avatar from "../assets/image/Avatar.svg";
+import logoSmall from "../assets/logosmall.svg";
+import { UserContext } from "../Context/UserContext";
+import Nav from "./Nav";
 
-export default function SideBar({ profilePicture, username, setRender }) {
+export default function SideBar({ setRender }) {
   const { user } = useContext(UserContext);
   return (
     <Flex direction="column" width="300px" minW='200px' backgroundColor="#121A21" px='20px' height='100vh'>

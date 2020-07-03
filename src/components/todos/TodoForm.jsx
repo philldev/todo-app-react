@@ -1,12 +1,11 @@
-import React from "react";
 import {
   FormControl,
+  IconButton,
   Input,
   InputGroup,
   InputRightElement,
-  Icon,
-  IconButton,
 } from "@chakra-ui/core";
+import React from "react";
 
 export default function TodoForm({ handleSubmit }) {
   return (
@@ -27,7 +26,7 @@ export default function TodoForm({ handleSubmit }) {
               type="submit"
               icon="add"
               color="orange.500"
-              _hover={{ backgroundColor: "inherit", transform:'scale(1.2)'}}
+              _hover={{ backgroundColor: "inherit", transform: "scale(1.2)" }}
             />
           }
         />

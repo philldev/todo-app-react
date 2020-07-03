@@ -1,5 +1,5 @@
+import { Image, ListItem } from '@chakra-ui/core'
 import React from 'react'
-import { ListItem, Image, Box } from '@chakra-ui/core'
 
 export default function NavItem({handleClick, image, text, active}) {
   return (

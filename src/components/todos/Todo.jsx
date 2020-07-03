@@ -1,6 +1,5 @@
+import { Box, Checkbox, Flex, Icon, Text } from "@chakra-ui/core";
 import React from "react";
-import { Box, Input, Checkbox, Icon, Flex, Text } from "@chakra-ui/core";
-import { theme } from "../../utils.js/theme";
 
 export default function Todo({ todo, handleDelete, toggleCompleted }) {
   const handleClick = () => {

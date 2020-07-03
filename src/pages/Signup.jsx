@@ -29,7 +29,7 @@ export default function Signup() {
     setState({
       ...state,
       errors: [],
-      loading: false,
+      loading: true,
     });
 
     if (data.password !== data.confirmPassword) {
@@ -54,7 +54,8 @@ export default function Signup() {
       .then((response) => {
         console.log(response);
         localStorage.setItem("AuthToken", `${response.data.token}`);
-        setState({
+        console.log(response.data.token)
+        setState({ ...state,
           loading: false,
         });
         history.push("/");

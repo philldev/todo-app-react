@@ -1,25 +1,32 @@
-import { Box, Image, List, ListItem } from "@chakra-ui/core";
+import { List, Box } from "@chakra-ui/core";
 import React from "react";
-import account from "../assets/image/account.svg";
-import logout from "../assets/image/logout.svg";
-import todos from "../assets/image/todos.svg";
 import { useHistory } from "react-router-dom";
+import account from "../assets/image/account.svg";
+import todos from "../assets/image/todos.svg";
+import logout from "../assets/image/logout.svg";
 import NavItem from "./NavItem";
 
 export default function Nav({ setRender }) {
   const history = useHistory();
-  const handleClick = (e) => {
-    if (e.target.id === "account") setRender("account");
-    if (e.target.id === "todos") setRender("todos");
-    // else {
-    //   localStorage.removeItem("AuthToken");
-    //   history.push("/login");
-    // }
-  };
+  
   return (
     <List width="100%" fontSize="14px">
-      <NavItem image={todos} handleClick={handleClick} text='todos'  active={true} />
-      <NavItem image={account} handleClick={handleClick} text='account' active={false}   />
+      <Box onClick={() => setRender("todos")}>
+        <NavItem image={todos} text="todos" active={true} />
+      </Box>
+
+      <Box onClick={() => setRender("account")}>
+        <NavItem image={account} text="account" active={false} />
+      </Box>
+
+      <Box
+        onClick={() => {
+          localStorage.removeItem("AuthToken");
+          history.push("/login");
+        }}
+      >
+        <NavItem image={logout} text="Logout" active={false} />
+      </Box>
     </List>
   );
 }
