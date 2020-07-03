@@ -1,12 +1,14 @@
 import Axios from "axios";
 
-const fetchTodos = async (setTodos, setLoading) => {
+const fetchTodos = async (setTodos, setLoading, source) => {
   const authToken = localStorage.getItem("AuthToken");
 
   try {
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
 
-    const response = await Axios.get("/todos");
+    const response = await Axios.get("/todos",  {
+      cancelToken: source.token
+    });
     const data = await response.data;
 
     

@@ -1,21 +1,20 @@
-import React, { useState } from "react";
 import {
+  Alert,
+  AlertIcon,
   Box,
-  Heading,
-  Stack,
   Button,
   FormControl,
   Spinner,
-  Alert,
-  AlertIcon,
+  Text,
+  Link
 } from "@chakra-ui/core";
-import FormInput from "../components/FormInput";
-import { useForm } from "react-hook-form";
 import Axios from "axios";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link as RouterLink, useHistory } from "react-router-dom";
+import FormInput from "../components/FormInput";
+import LoginSignupContainer from "../container/LoginSignupContainer";
 import { loginField } from "../utils.js/formField";
-import Navbar from "../components/Navbar";
-
 
 export default function Login() {
   let history = useHistory();
@@ -38,7 +37,6 @@ export default function Login() {
 
     Axios.post("/login", userData)
       .then((res) => {
-        
         localStorage.setItem("AuthToken", `Bearer ${res.data.token}`);
         setState({
           ...state,
@@ -47,7 +45,7 @@ export default function Login() {
         history.push("/");
       })
       .catch((error) => {
-        console.log(error.response.data)
+        console.log(error.response.data);
         if (error.response.data) {
           setState({
             errors: error.response.data.general,
@@ -58,32 +56,46 @@ export default function Login() {
   };
 
   return (
-    <>
-    <Navbar />
-    <Box mx="auto" maxW="500px" as="form" onSubmit={handleSubmit(onSubmit)}>
-      <Heading textAlign="center">Login</Heading>
-      {loginField.map((f, i) => (
-        <FormInput
-          key={i}
-          type={f.type}
-          name={f.name}
-          label={f.label}
-          register={register}
-        />
-      ))}
+    <LoginSignupContainer>
+      <Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
+        {loginField.map((f, i) => (
+          <FormInput
+            key={i}
+            type={f.type}
+            name={f.name}
+            label={f.label}
+            register={register}
+          />
+        ))}
 
-      <FormControl mb="1rem" textAlign="center">
-        <Button type="submit" backgroundColor="blue.500" color="white">
-          {state.loading ? <Spinner /> : "Login"}
-        </Button>
-      </FormControl>
-      {state.errors.length > 0 && (
-        <Alert status="error">
-          <AlertIcon />
-          {state.errors}
-        </Alert>
-      )}
-    </Box>
-    </>
+        <FormControl mb="1rem">
+          <Button
+            type="submit"
+            backgroundColor="#F65A18"
+            color="white"
+            mt="40px"
+            py="8px"
+            fontSize="14px"
+            display="block"
+            width="100%"
+          >
+            {state.loading ? <Spinner /> : "Login"}
+          </Button>
+        </FormControl>
+        <Text>
+          Dont have an account?{" "}
+          <Link as={RouterLink} to="/signup" color="green.100">
+            Click here.
+          </Link>{" "}
+          Its free{" "}
+        </Text>
+        {/* {state.errors.length > 0 && (
+          <Alert status="error">
+            <AlertIcon />
+            {state.errors}
+          </Alert>
+        )} */}
+      </Box>
+    </LoginSignupContainer>
   );
 }

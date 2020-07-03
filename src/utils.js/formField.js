@@ -31,18 +31,6 @@ export const signupField = [
   },
   {
     type: "text",
-    label: "Phone number",
-    name: "phoneNumber",
-    required: false
-  },
-  {
-    type: "text",
-    label: "Country",
-    name: "country",
-    required: false
-  },
-  {
-    type: "text",
     label: "Username",
     name: "username",
     required: true
