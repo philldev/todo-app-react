@@ -4,6 +4,8 @@ const fetchTodos = async (setTodos, setLoading, source) => {
   const authToken = localStorage.getItem("AuthToken");
 
   try {
+
+    console.log('fetching')
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
 
     const response = await Axios.get("/todos",  {

@@ -7,15 +7,16 @@ export default function LoginSignupContainer({ children }) {
   return (
     <Flex>
       <Flex
-        px="40px"
+        px={{base:'25px', lg:"40px"}}
+        py={{base:'40px', lg:"40px"}}
         backgroundColor="#1E2B39"
         flexDirection="column"
         justifyContent="center"
-        width="400px"
+        width={{base:'100vw',lg:"400px"}}
         height="100vh"
         flexShrink="0"
       >
-        <Image src={logo} mb="20px" />
+        <Image src={logo} my="25px" />
 
         {children}
       </Flex>

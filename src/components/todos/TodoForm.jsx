@@ -9,13 +9,15 @@ import React from "react";
 
 export default function TodoForm({ handleSubmit }) {
   return (
-    <FormControl as="form" mb="2rem" onSubmit={handleSubmit}>
+    <FormControl as="form" my="2rem" onSubmit={handleSubmit}>
       <InputGroup>
         <Input
+          placeholder='add todos ...'
           name="body"
           border="none"
           backgroundColor="inherit"
           borderBottom="1px solid black"
+          borderTop="1px solid black"
           borderRadius="0"
           _focus={{ outline: "none" }}
         />

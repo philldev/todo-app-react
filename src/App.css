@@ -1,18 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
 
 * {
-  font-family: 'Cabin', sans-serif !important;
+  font-family: "Cabin", sans-serif !important;
 }
 
 body {
-  background-color: #25313C;
+  background-color: #25313c;
 }
 
 label {
   font-weight: medium;
   text-transform: uppercase;
   font-size: 16px;
-  color: #6D7D8B;
+  color: #6d7d8b;
 }
 
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
 
+body::-webkit-scrollbar-track {
+  background-color: #25313c;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #F65A18;
+}

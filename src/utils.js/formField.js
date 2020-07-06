@@ -3,37 +3,55 @@ export const signupField = [
     type: "email",
     label: "Email",
     name: "email",
-    required: true
+    validation: {
+      required: true
+    }
   },
   {
     type: "password",
     label: "Password",
     name: "password",
-    required: true
+    validation: {
+      required: true,
+      minLength: 8
+    }
   },
   {
     type: "password",
     label: "Confirm password",
     name: "confirmPassword",
-    required: true
+    validation: {
+      required: true,
+      minLength: 8
+    }
   },
   {
     type: "text",
     label: "First Name",
     name: "firstName",
-    required: false
+    validation: {
+      required: true,
+      maxLength: 20
+    }
   },
   {
     type: "text",
     label: "Last name",
     name: "lastName",
-    required: false
+    validation: {
+      required: true,
+      maxLength: 20
+    }
   },
   {
     type: "text",
     label: "Username",
     name: "username",
-    required: true
+    validation: {
+      required: true,
+      maxLength: 20,
+      minLength: 4
+    }
   },
 ];
 

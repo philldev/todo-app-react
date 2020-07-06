@@ -6,7 +6,7 @@ import {
   FormControl,
   Spinner,
   Text,
-  Link
+  Link,
 } from "@chakra-ui/core";
 import Axios from "axios";
 import React, { useState } from "react";
@@ -22,7 +22,7 @@ export default function Login() {
     errors: [],
     loading: false,
   });
-  const { register, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     setState({
@@ -46,7 +46,7 @@ export default function Login() {
       })
       .catch((error) => {
         console.log(error.response.data);
-        if (error.response.data) {
+        if (error.response.data.general) {
           setState({
             errors: error.response.data.general,
             loading: false,
@@ -65,6 +65,7 @@ export default function Login() {
             name={f.name}
             label={f.label}
             register={register}
+            errors={errors}
           />
         ))}
 
@@ -89,12 +90,12 @@ export default function Login() {
           </Link>{" "}
           Its free{" "}
         </Text>
-        {/* {state.errors.length > 0 && (
-          <Alert status="error">
+        {state.errors.length > 0 && (
+          <Alert status="error" backgroundColor='inherit' color='red.300'>
             <AlertIcon />
             {state.errors}
           </Alert>
-        )} */}
+        )}
       </Box>
     </LoginSignupContainer>
   );

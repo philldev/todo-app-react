@@ -23,7 +23,7 @@ export default function Signup() {
     errors: [],
     loading: false,
   });
-  const { register, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     setState({
@@ -61,13 +61,15 @@ export default function Signup() {
         history.push("/");
       })
       .catch((error) => {
-        console.log(error.response.data.username);
-        // setState({
-        // 	errors: error.response.data,
-        // 	loading: false
-        // });
+        console.log(error.response.data);
+        setState({
+        	errors: error.response.data,
+        	loading: false
+        });
       });
   };
+
+  console.log(errors)
   return (
     <LoginSignupContainer>
       <Box as="form" width="100%" onSubmit={handleSubmit(onSubmit)}>
@@ -78,6 +80,8 @@ export default function Signup() {
             name={f.name}
             label={f.label}
             register={register}
+            validation={f.validation}
+            errors={errors}
           />
         ))}
 
@@ -105,7 +109,7 @@ export default function Signup() {
           </Link>{" "}
         </Text>
         {state.errors.length > 0 && (
-          <Alert status="error">
+          <Alert status="error" backgroundColor="inherit" color="red.300" fontSize='12px'>
             <AlertIcon />
             {state.errors}
           </Alert>

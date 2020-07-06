@@ -6,26 +6,37 @@ import todos from "../assets/image/todos.svg";
 import logout from "../assets/image/logout.svg";
 import NavItem from "./NavItem";
 
-export default function Nav({ setRender }) {
+export default function Nav({ setRender, render, isOpen }) {
   const history = useHistory();
-  
+
   return (
     <List width="100%" fontSize="14px">
       <Box onClick={() => setRender("todos")}>
-        <NavItem image={todos} text="todos" active={true} />
+        <NavItem
+          image={todos}
+          text="todos"
+          isOpen={isOpen}
+          active={render === "todos" ? true : false}
+        />
       </Box>
 
       <Box onClick={() => setRender("account")}>
-        <NavItem image={account} text="account" active={false} />
+        <NavItem
+          image={account}
+          text="account"
+          isOpen={isOpen}
+          active={render === "account" ? true : false}
+        />
       </Box>
 
       <Box
+        mt="auto"
         onClick={() => {
           localStorage.removeItem("AuthToken");
           history.push("/login");
         }}
       >
-        <NavItem image={logout} text="Logout" active={false} />
+        <NavItem image={logout} text="Logout" isOpen={isOpen} active={false} />
       </Box>
     </List>
   );

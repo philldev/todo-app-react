@@ -117,7 +117,7 @@ export default function Account({ profile }) {
           type="text"
           required={false}
         />
-
+        <Divider borderColor="gray" my="1rem" />
         <FormControl>
           <FormLabel>Email</FormLabel>
           <Text mb="10px">{user.email}</Text>
@@ -142,7 +142,7 @@ export default function Account({ profile }) {
               mb="10px"
               mx="auto"
             />
-            <Flex>
+            <Flex direction={{base:'column', lg:'row'}}>
               <Button
                 type="submit"
                 border={`1px solid #BBC8D4`}
