@@ -3,12 +3,11 @@ import React from "react";
 
 export default function Todo({ todo, handleDelete, toggleCompleted }) {
   const handleClick = () => {
-    handleDelete(todo.todoId);
+    handleDelete(todo.id);
   };
 
   const handleChange = () => {
-    toggleCompleted(todo.todoId);
-    console.log(todo);
+    toggleCompleted(todo.id);
   };
 
   return (

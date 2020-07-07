@@ -2,30 +2,43 @@ import React, { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import fetchUser from "../utils.js/fetchUser";
 import fetchTodos from "../utils.js/fetchTodos";
+import uniqid from "uniqid";
 import Axios from "axios";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [todos, setTodos] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (e.target.body.value.trim()) {
+      let newTodo = {
+        body: e.target.body.value,
+        id: uniqid("todo-"),
+        completed: false,
+      };
+
+      setTodos((todos) => (todos = [...todos, newTodo]));
+
       let options = {
         url: "/todo",
         method: "post",
-        data: { body: e.target.body.value, completed: false },
+        data: newTodo,
       };
       const authToken = localStorage.getItem("AuthToken");
       Axios.defaults.headers.common = { Authorization: `${authToken}` };
       Axios(options)
         .then((response) => {
-          setTodos((t) => (t = [response.data, ...t]));
+          //todo
+          // setTodos((todos) => {
+          //  newTodo.id = response.data.todoId
+          //  return todos = [newTodo , ...todos]
+          // })
         })
         .catch((error) => {
           //todo
@@ -37,7 +50,7 @@ export const UserProvider = ({ children }) => {
   const toggleCompleted = (id) => {
     setTodos((todos) =>
       todos.map((todo) => {
-        if (todo.todoId === id) {
+        if (todo.id === id) {
           return {
             ...todo,
             completed: !todo.completed,
@@ -46,7 +59,7 @@ export const UserProvider = ({ children }) => {
         return todo;
       })
     );
-    let todo = todos.find((todo) => todo.todoId === id);
+    let todo = todos.find((todo) => todo.id === id);
     let options = {
       url: `/todo/${id}`,
       method: "put",
@@ -65,44 +78,44 @@ export const UserProvider = ({ children }) => {
 
   const handleDelete = (id) => {
     const authToken = localStorage.getItem("AuthToken");
+    setTodos((todos) => todos.filter((todo) => todo.id !== id));
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
     let todoId = id;
     Axios.delete(`todo/${todoId}`)
       .then(() => {
-        setTodos((todos) => todos.filter((todo) => todo.todoId !== id));
+        console.log("successfully deleted a todo");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  
+
   useEffect(() => {
     const authToken = localStorage.getItem("AuthToken");
     if (authToken === null) {
       history.push("/login");
     }
-  }, [history])
-  
+  }, [history]);
+
   useEffect(() => {
     let source = Axios.CancelToken.source();
-    setLoading(true)
-    fetchUser(setLoading, setUser, history, source)
-    fetchTodos(setTodos, setLoading, source)
+    setLoading(true);
+    fetchUser(setLoading, setUser, history, source);
+    fetchTodos(setTodos, setLoading, source);
     return () => {
-      source.cancel()
-    }
-    
+      source.cancel();
+    };
   }, [history]);
 
   const value = {
     user,
     loading,
     todos,
-    todosHandler : {
+    todosHandler: {
       handleSubmit,
       toggleCompleted,
-      handleDelete
-    }
+      handleDelete,
+    },
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

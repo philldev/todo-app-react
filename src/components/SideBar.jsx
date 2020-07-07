@@ -5,6 +5,7 @@ import logoSmall from "../assets/logosmall.svg";
 import { UserContext } from "../Context/UserContext";
 import Nav from "./Nav";
 import useOutsideClick from "../customHooks/useOutsideClick";
+import Loading from "./Loading";
 
 export default function SideBar({ setRender, render }) {
   const { user } = useContext(UserContext);
@@ -14,7 +15,7 @@ export default function SideBar({ setRender, render }) {
   };
   const ref = useRef();
   useOutsideClick(ref, () => {
-    setIsOpen(false)
+    setIsOpen(false);
   });
   return (
     <Flex
@@ -28,10 +29,10 @@ export default function SideBar({ setRender, render }) {
       backgroundColor="#121A21"
       px="20px"
       height="100vh"
-      transition='all .3s ease-out'
+      transition="all .3s ease-out"
     >
       <IconButton
-      display={{base:'block', lg:'none'}}
+        display={{ base: "block", lg: "none" }}
         backgroundColor="inherit"
         variantColor="orange"
         aria-label="Send email"
@@ -39,20 +40,27 @@ export default function SideBar({ setRender, render }) {
         size="sm"
         mt="15px"
         ml="auto"
-        transform={isOpen ? 'rotate(180deg)' :''}
-        transition='transform .3s ease-out'
+        transform={isOpen ? "rotate(180deg)" : ""}
+        transition="transform .3s ease-out"
         onClick={handleOpen}
-        _focus={{outline:'none'}}
+        _focus={{ outline: "none" }}
       />
       <Image src={logoSmall} mt="20px" mb="50px" />
-      <Avatar
-        size={{ base: "sm", lg: "md" }}
-        name="Prosper Otemuyiwa"
-        src={user.imageUrl !== "" ? user.imageUrl : avatar}
-        mb="30px"
-        mx="auto"
-      />
-      <Nav setRender={setRender} render={render} isOpen={isOpen} />
+      {user ? (
+        <>
+          {" "}
+          <Avatar
+            size={{ base: "sm", lg: "md" }}
+            name="Prosper Otemuyiwa"
+            src={user.imageUrl !== "" ? user.imageUrl : avatar}
+            mb="30px"
+            mx="auto"
+          />
+          <Nav setRender={setRender} render={render} isOpen={isOpen} />{" "}
+        </>
+      ) : (
+        <Loading />
+      )}
     </Flex>
   );
 }
