@@ -7,7 +7,7 @@ const fetchUser = async (setLoading, setUser, history, source) => {
   try {
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
 
-    const response = await Axios.get("/user", {
+    const response = await Axios.get("/api/user", {
       cancelToken: source.token
     });
     const data = await response.data.userCredentials;
@@ -19,7 +19,7 @@ const fetchUser = async (setLoading, setUser, history, source) => {
   } catch (error) {
     console.log(error);
     if ( error ) {
-      history.push('/login');
+      history.push('/api/login');
     }
     setLoading(false)
   }

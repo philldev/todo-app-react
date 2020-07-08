@@ -26,7 +26,7 @@ export const UserProvider = ({ children }) => {
       setTodos((todos) => (todos = [...todos, newTodo]));
 
       let options = {
-        url: "/todo",
+        url: "/api/todo",
         method: "post",
         data: newTodo,
       };
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }) => {
     );
     let todo = todos.find((todo) => todo.id === id);
     let options = {
-      url: `/todo/${id}`,
+      url: `/api/todo/${id}`,
       method: "put",
       data: { ...todo, completed: !todo.completed },
     };
@@ -80,7 +80,7 @@ export const UserProvider = ({ children }) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
     let todoId = id;
-    Axios.delete(`todo/${todoId}`)
+    Axios.delete(`/api/todo/${todoId}`)
       .then(() => {
         console.log("successfully deleted a todo");
       })
