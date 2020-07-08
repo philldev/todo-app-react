@@ -35,7 +35,7 @@ export default function Login() {
       password: data.password,
     };
 
-    Axios.post("/login", userData)
+    Axios.post("/api/login", userData)
       .then((res) => {
         localStorage.setItem("AuthToken", `Bearer ${res.data.token}`);
         setState({

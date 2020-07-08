@@ -50,7 +50,7 @@ export default function Signup() {
       password: data.password,
       confirmPassword: data.confirmPassword,
     };
-    Axios.post("/signup", newUserData)
+    Axios.post("/api/signup", newUserData)
       .then((response) => {
         console.log(response);
         localStorage.setItem("AuthToken", `${response.data.token}`);
