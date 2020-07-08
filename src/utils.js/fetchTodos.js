@@ -5,7 +5,7 @@ const fetchTodos = async (setTodos, setLoading, source) => {
 
   try {
 
-    console.log('fetching')
+
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
 
     const response = await Axios.get("/api/todos",  {
