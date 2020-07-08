@@ -1,9 +1,9 @@
+import Axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import fetchUser from "../utils.js/fetchUser";
-import fetchTodos from "../utils.js/fetchTodos";
 import uniqid from "uniqid";
-import Axios from "axios";
+import fetchTodos from "../utils.js/fetchTodos";
+import fetchUser from "../utils.js/fetchUser";
 
 export const UserContext = createContext();
 
@@ -13,9 +13,7 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = (data) => {
-    
-
+  const handleSubmit = (data, e) => {
     if (data.body) {
       let newTodo = {
         body: data.body,
@@ -44,6 +42,7 @@ export const UserProvider = ({ children }) => {
           //todo
         });
     }
+    e.target.reset();
   };
 
   const toggleCompleted = (id) => {
@@ -80,7 +79,9 @@ export const UserProvider = ({ children }) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
     let todoId = id;
-    Axios.delete(`https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/todo/${todoId}`)
+    Axios.delete(
+      `https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/todo/${todoId}`
+    )
       .then(() => {
         console.log("successfully deleted a todo");
       })

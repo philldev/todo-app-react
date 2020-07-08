@@ -13,7 +13,7 @@ export default function LoginSignupContainer({ children }) {
         flexDirection="column"
         justifyContent="center"
         width={{base:'100vw',lg:"400px"}}
-        height="100vh"
+        minHeight="100vh"
         flexShrink="0"
       >
         <Image src={logo} my="25px" />

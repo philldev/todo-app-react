@@ -9,8 +9,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 export default function TodoForm({ handleSubmit }) {
-  const { register, errors, handleSubmit : formSubmit } = useForm();
-  const isError = errors.body && errors.body.type === "required" 
+  const { register, handleSubmit : formSubmit } = useForm();
+
 
 
   return (
@@ -18,7 +18,7 @@ export default function TodoForm({ handleSubmit }) {
       <InputGroup>
         <Input
         ref={register({required : true})}
-          placeholder={isError ? 'Cannot be empty!':'Add todos...'}
+          placeholder='Add todos...'
           name="body"
           border="none"
           backgroundColor="inherit"
@@ -26,7 +26,6 @@ export default function TodoForm({ handleSubmit }) {
           borderTop="1px solid black"
           borderRadius="0"
           _focus={{ outline: "none" }}
-          _placeholder={{color:isError ? 'red.300' : 'inherit'}}
         />
         <InputRightElement
           children={

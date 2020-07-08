@@ -50,7 +50,7 @@ export default function SideBar({ setRender, render }) {
         <>
           {" "}
           <Avatar
-            size={{ base: "sm", lg: "md" }}
+            size={{ base: "sm", lg: "sm" }}
             name="Prosper Otemuyiwa"
             src={user.imageUrl !== "" ? user.imageUrl : avatar}
             mb="30px"
