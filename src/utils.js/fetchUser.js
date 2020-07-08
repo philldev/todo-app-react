@@ -19,7 +19,7 @@ const fetchUser = async (setLoading, setUser, history, source) => {
   } catch (error) {
     console.log(error);
     if ( error ) {
-      history.push('/api/login');
+      history.push('/login');
     }
     setLoading(false)
   }
