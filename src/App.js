@@ -18,16 +18,16 @@ function App() {
           color="white"
         >
           <Switch>
-            <Route exact path="/">
-              <UserProvider>
-                <Home />
-              </UserProvider>
-            </Route>
             <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/signup">
               <Signup />
+            </Route>
+            <Route path="/">
+              <UserProvider>
+                <Home />
+              </UserProvider>
             </Route>
           </Switch>
         </Box>
