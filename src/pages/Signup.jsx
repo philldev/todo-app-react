@@ -50,7 +50,7 @@ export default function Signup() {
       password: data.password,
       confirmPassword: data.confirmPassword,
     };
-    Axios.post("/api/signup", newUserData)
+    Axios.post("https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/signup", newUserData)
       .then((response) => {
         console.log(response);
         localStorage.setItem("AuthToken", `${response.data.token}`);

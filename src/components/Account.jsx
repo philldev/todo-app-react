@@ -40,7 +40,7 @@ export default function Account({ profile }) {
       lastName: data.lastName,
       country: data.country,
     };
-    Axios.post("/api/user", formRequest)
+    Axios.post("https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/user", formRequest)
       .then(() => {
         setState({ loading: false });
       })
@@ -69,7 +69,7 @@ export default function Account({ profile }) {
     let form_data = new FormData();
     form_data.append("image", state.image);
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
-    Axios.post("/api/user/image", form_data, {
+    Axios.post("https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/user/image", form_data, {
       headers: {
         "content-type": "multipart/form-data",
       },

@@ -7,7 +7,7 @@ const fetchUser = async (setLoading, setUser, history, source) => {
   try {
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
 
-    const response = await Axios.get("/api/user", {
+    const response = await Axios.get("https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/user", {
       cancelToken: source.token
     });
     const data = await response.data.userCredentials;

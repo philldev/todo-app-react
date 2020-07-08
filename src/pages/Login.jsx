@@ -35,7 +35,7 @@ export default function Login() {
       password: data.password,
     };
 
-    Axios.post("/api/login", userData)
+    Axios.post("https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/login", userData)
       .then((res) => {
         localStorage.setItem("AuthToken", `Bearer ${res.data.token}`);
         setState({

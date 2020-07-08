@@ -26,7 +26,7 @@ export const UserProvider = ({ children }) => {
       setTodos((todos) => (todos = [...todos, newTodo]));
 
       let options = {
-        url: "/api/todo",
+        url: "https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/todo",
         method: "post",
         data: newTodo,
       };
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }) => {
     );
     let todo = todos.find((todo) => todo.id === id);
     let options = {
-      url: `/api/todo/${id}`,
+      url: `https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/todo/${id}`,
       method: "put",
       data: { ...todo, completed: !todo.completed },
     };
@@ -80,7 +80,7 @@ export const UserProvider = ({ children }) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
     Axios.defaults.headers.common = { Authorization: `${authToken}` };
     let todoId = id;
-    Axios.delete(`/api/todo/${todoId}`)
+    Axios.delete(`https://us-central1-todoapp-fb5c3.cloudfunctions.net/api/todo/${todoId}`)
       .then(() => {
         console.log("successfully deleted a todo");
       })
