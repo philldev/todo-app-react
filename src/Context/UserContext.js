@@ -13,12 +13,12 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (data) => {
+    
 
-    if (e.target.body.value.trim()) {
+    if (data.body) {
       let newTodo = {
-        body: e.target.body.value,
+        body: data.body,
         id: uniqid("todo-"),
         completed: false,
       };
@@ -44,7 +44,6 @@ export const UserProvider = ({ children }) => {
           //todo
         });
     }
-    e.target.body.value = "";
   };
 
   const toggleCompleted = (id) => {

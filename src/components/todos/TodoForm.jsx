@@ -3,16 +3,22 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputRightElement,
+  InputRightElement
 } from "@chakra-ui/core";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 export default function TodoForm({ handleSubmit }) {
+  const { register, errors, handleSubmit : formSubmit } = useForm();
+  const isError = errors.body && errors.body.type === "required" 
+
+
   return (
-    <FormControl as="form" my="2rem" onSubmit={handleSubmit}>
+    <FormControl as="form" my="2rem" onSubmit={formSubmit(handleSubmit)}>
       <InputGroup>
         <Input
-          placeholder='add todos ...'
+        ref={register({required : true})}
+          placeholder={isError ? 'Cannot be empty!':'Add todos...'}
           name="body"
           border="none"
           backgroundColor="inherit"
@@ -20,6 +26,7 @@ export default function TodoForm({ handleSubmit }) {
           borderTop="1px solid black"
           borderRadius="0"
           _focus={{ outline: "none" }}
+          _placeholder={{color:isError ? 'red.300' : 'inherit'}}
         />
         <InputRightElement
           children={

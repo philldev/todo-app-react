@@ -85,7 +85,7 @@ export default function Signup() {
           />
         ))}
 
-        <Checkbox>Agree. Terms & conditions</Checkbox>
+        <Checkbox ref={register({required:true})}>Agree. Terms & conditions</Checkbox>
 
         <FormControl mb="1rem" textAlign="center">
           <Button
@@ -97,6 +97,7 @@ export default function Signup() {
             fontSize="14px"
             display="block"
             width="100%"
+            _hover={{backgroundColor:'#F65A18'}}
           >
             {state.loading ? <Spinner /> : "Sign Up"}
           </Button>

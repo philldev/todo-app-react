@@ -1,9 +1,8 @@
 import { Box } from "@chakra-ui/core";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Account from "../components/Account";
 import SideBar from "../components/SideBar";
 import Todos from "../components/todos/Todos";
-import { UserContext } from "../Context/UserContext";
 
 export default function Home() {
   const [render, setRender] = useState("todos");

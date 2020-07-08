@@ -51,28 +51,28 @@ function App() {
   return (
     <ThemeProvider theme={customTheme}>
       <CSSReset />
-      <Router>
-        <Box
-          as="div"
-          minHeight="100vh"
-          backgroundColor="gray.800"
-          color="white"
-        >
-          <Switch>
-            <Route exact path="/">
-              <UserProvider>
+      <UserProvider>
+        <Router>
+          <Box
+            as="div"
+            minHeight="100vh"
+            backgroundColor="gray.800"
+            color="white"
+          >
+            <Switch>
+              <Route exact path="/">
                 <Home />
-              </UserProvider>
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <Signup />
-            </Route>
-          </Switch>
-        </Box>
-      </Router>
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+            </Switch>
+          </Box>
+        </Router>
+      </UserProvider>
     </ThemeProvider>
   );
 }

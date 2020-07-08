@@ -2,7 +2,7 @@
   "name": "todo-app-views",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/todoapp-fb5c3/us-central1/api",
+  "proxy": "https://us-central1-todoapp-fb5c3.cloudfunctions.net/api",
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
     "@emotion/core": "^10.0.28",

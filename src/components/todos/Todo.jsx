@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Icon, Text, ListItem } from "@chakra-ui/core";
+import { Box, Checkbox, Flex, IconButton, ListItem, Text } from "@chakra-ui/core";
 import React from "react";
 
 export default function Todo({ todo, handleDelete, toggleCompleted }) {
@@ -16,8 +16,7 @@ export default function Todo({ todo, handleDelete, toggleCompleted }) {
       mb="15px"
       display="flex"
       justifyContent="space-between"
-      _hover={{transform:'translateY(-5px)'}}
-      transition='transform .2s ease-out'
+      role='group'
     >
       <Flex alignItems='center'>
         <Checkbox
@@ -36,13 +35,18 @@ export default function Todo({ todo, handleDelete, toggleCompleted }) {
         </Text>
       </Flex>
       <Box display='flex' alignItems='center'>
-        <Icon
+        <IconButton
+        backgroundColor='inherit'
+        opacity='0'
           color="red.300"
           float="right"
-          name="delete"
+          icon="delete"
           size="16px"
           cursor='pointer'
           onClick={handleClick}
+          _hover={{backgroundColor:'inherit'}}
+          _groupHover={{opacity:1}}
+          transition='opacity .2s ease-in'
         />
       </Box>
     </ListItem>

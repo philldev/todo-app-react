@@ -1,4 +1,4 @@
-import { Image, ListItem, Text, Icon } from "@chakra-ui/core";
+import { Image, ListItem, Text } from "@chakra-ui/core";
 import React from "react";
 
 export default function NavItem({ handleClick, image, text, active, isOpen }) {
@@ -12,6 +12,9 @@ export default function NavItem({ handleClick, image, text, active, isOpen }) {
       pl="5px"
       mb="10px"
       cursor="pointer"
+      border='1px solid transparent'
+      _hover={{border:'1px solid #F65A18'}}
+      transition='border .2s ease-out'
     >
       <Image cursor="pointer" src={image} mr="1rem" />
       <Text
