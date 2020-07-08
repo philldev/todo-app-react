@@ -11,26 +11,26 @@ function App() {
     <ThemeProvider>
       <CSSReset />
       <Router>
-        <UserProvider>
-          <Box
-            as="div"
-            minHeight="100vh"
-            backgroundColor="gray.800"
-            color="white"
-          >
-            <Switch>
-              <Route exact path="/">
+        <Box
+          as="div"
+          minHeight="100vh"
+          backgroundColor="gray.800"
+          color="white"
+        >
+          <Switch>
+            <Route exact path="/">
+              <UserProvider>
                 <Home />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-            </Switch>
-          </Box>
-        </UserProvider>
+              </UserProvider>
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+          </Switch>
+        </Box>
       </Router>
     </ThemeProvider>
   );
